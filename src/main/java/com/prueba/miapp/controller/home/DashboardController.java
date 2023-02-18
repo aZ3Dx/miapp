@@ -1,6 +1,11 @@
 package com.prueba.miapp.controller.home;
 
+import java.util.Set;
+
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DashboardController {
     
     @GetMapping("/dashboard/inicio")
-    public String dashboard(Model model) {
-        System.out.println("Mostrando dashboard");
+    public String dashboard(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        Set<String> roles = AuthorityUtils.authorityListToSet(userDetails.getAuthorities());
+    
+        model.addAttribute("username", username);
+        model.addAttribute("roles", roles);
+    
         return "dashboard";
     }
     
