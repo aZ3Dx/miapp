@@ -33,7 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
         Rol rol = usuario.getRol();
-        String nombreRol = "ROLE_" + rol.getNombreRol();
+        String nombreRol = rol.getNombreRol();
         GrantedAuthority authority = new SimpleGrantedAuthority(nombreRol);
         List<GrantedAuthority> authorities = Collections.singletonList(authority);
         return User.builder()
