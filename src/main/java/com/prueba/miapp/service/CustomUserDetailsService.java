@@ -1,8 +1,10 @@
 package com.prueba.miapp.service;
 
-// import java.util.*;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 // import org.springframework.security.core.GrantedAuthority;
 // import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -32,18 +34,28 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         Rol rol = usuario.getRol();
         String nombreRol = "ROLE_" + rol.getNombreRol();
-        return User.withUsername(usuario.getNombreUsuario())
-                .password(securityBeans.passwordEncoder().encode(usuario.getCredencial()))
-                .roles(nombreRol)
+        GrantedAuthority authority = new SimpleGrantedAuthority(nombreRol);
+        List<GrantedAuthority> authorities = Collections.singletonList(authority);
+        return User.builder()
+                .username(usuario.getNombreUsuario())
+                .password(usuario.getCredencial())
+                .authorities(authorities)
                 .build();
+        // return User.withUsername(usuario.getNombreUsuario())
+        //         .password(securityBeans.passwordEncoder().encode(usuario.getCredencial()))
+        //         .roles(nombreRol)
+        //         .build();
         // return new User(usuario.getNombreUsuario() , usuario.getCredencial(), getAuthorities(usuario));
     }
 
     // private Collection<? extends GrantedAuthority> getAuthorities(Usuario usuario) {
     //     List<GrantedAuthority> authorities = new ArrayList<>();
-    //     for (Rol rol : usuario.getRol()) {
-    //         authorities.add(new SimpleGrantedAuthority("ROLE_" + rol.getNombreRol()));
-    //     }
+    //     // for (Rol rol : usuario.getRol()) {
+    //     //     authorities.add(new SimpleGrantedAuthority("ROLE_" + rol.getNombreRol()));
+    //     // }
+    //     Rol rol = usuario.getRol();
+    //     String nombreRol = "ROLE_" + rol.getNombreRol();
+    //     authorities.add(new SimpleGrantedAuthority(nombreRol));
     //     return authorities;
     // }
 
