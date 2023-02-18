@@ -1,13 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/webjars/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/5.2.3/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <h1>Bienvenido a la web</h1>
-    <a href="/login">Ingresa al sistema</a>
+
+<style>
+    /*
+ * Globals
+ */
+
+
+    /* Custom default button */
+    .btn-secondary,
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+        color: #333;
+        text-shadow: none;
+        /* Prevent inheritance from `body` */
+    }
+
+
+    /*
+ * Base structure
+ */
+
+    body {
+        text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+        box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+    }
+
+    .cover-container {
+        max-width: 42em;
+    }
+
+
+    /*
+ * Header
+ */
+
+    .nav-masthead .nav-link {
+        color: rgba(255, 255, 255, .5);
+        border-bottom: .25rem solid transparent;
+    }
+
+    .nav-masthead .nav-link:hover,
+    .nav-masthead .nav-link:focus {
+        border-bottom-color: rgba(255, 255, 255, .25);
+    }
+
+    .nav-masthead .nav-link+.nav-link {
+        margin-left: 1rem;
+    }
+
+    .nav-masthead .active {
+        color: #fff;
+        border-bottom-color: #fff;
+    }
+</style>
+
+<body class="d-flex vh-100 text-center text-bg-dark">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">Fercejor</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="px-3">
+            <h1>Repuestos Fercejor</h1>
+            <p class="lead"></p>
+            <p class="lead">
+                <a href="/login" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Ir a Login</a>
+            </p>
+        </main>
+
+        <footer class="mt-auto text-white-50">
+            <p>Cover template for <a href="#" class="text-white">Bootstrap</a>, by <a href="#"
+                    class="text-white">@mdo</a>.</p>
+        </footer>
+    </div>
 </body>
+
 </html>
