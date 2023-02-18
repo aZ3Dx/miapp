@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DashboardController {
     
-    @GetMapping("/dashboard")
+    @GetMapping("/dashboard/inicio")
     public String dashboard(Model model) {
         System.out.println("Mostrando dashboard");
         return "dashboard";
