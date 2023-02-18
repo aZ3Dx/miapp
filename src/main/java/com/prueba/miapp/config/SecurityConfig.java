@@ -11,6 +11,7 @@ import com.prueba.miapp.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
+@SuppressWarnings("deprecation")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -29,14 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/login").permitAll()
-                // .antMatchers("/dashboard/usuarios/**").hasRole("ROLE_Administrador")
-                // .antMatchers("/dashboard/**").hasAnyRole("Cliente", "Administrador")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic().disable()
                 .formLogin().disable()
                 // .loginProcessingUrl("/login")
-                // .successForwardUrl("/dashboard/inicio")
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")

@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.prueba.miapp.config.SecurityBeans;
 import com.prueba.miapp.model.Rol;
 import com.prueba.miapp.model.Usuario;
 
@@ -23,8 +22,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UsuarioService usuarioService;
 
-    @Autowired
-    private SecurityBeans securityBeans;
+    // @Autowired
+    // private SecurityBeans securityBeans;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
